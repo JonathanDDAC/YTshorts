@@ -1,0 +1,269 @@
+/* ============================================
+   TOKENS DE DISEÑO
+   ============================================ */
+:root {
+  --ink: #101B22;
+  --panel: #17242C;
+  --panel-alt: #1D2C35;
+  --line: #2A3942;
+  --text: #EAE6DA;
+  --text-muted: #9BAAB2;
+  --amber: #F2A93B;
+  --amber-dim: #C98A29;
+  --teal: #5FB3A3;
+
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.5;
+}
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px 64px;
+}
+
+/* ============================================
+   MARQUESINA (encabezado tipo cine)
+   ============================================ */
+.marquee {
+  background: linear-gradient(180deg, #14232C 0%, var(--ink) 100%);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 40px;
+}
+
+.sprockets {
+  height: 14px;
+  background-image: radial-gradient(circle, var(--ink) 3px, transparent 3.5px);
+  background-size: 22px 14px;
+  background-position: center;
+  background-color: var(--amber-dim);
+  opacity: 0.55;
+}
+
+.marquee__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px 24px 32px;
+  text-align: center;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  font-size: 12px;
+  color: var(--amber);
+  margin: 0 0 6px;
+}
+
+.marquee h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(32px, 5vw, 48px);
+  letter-spacing: 0.03em;
+  margin: 0 0 8px;
+  color: var(--text);
+}
+
+.subtitle {
+  color: var(--text-muted);
+  margin: 0;
+  font-size: 15px;
+}
+
+/* ============================================
+   PANELES / TARJETAS
+   ============================================ */
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.filters form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  align-items: end;
+}
+
+.campo--grande { grid-column: 1 / -1; }
+
+.campo label {
+  display: block;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.campo input,
+.campo select {
+  width: 100%;
+  background: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 10px 12px;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 14px;
+}
+
+.campo input:focus,
+.campo select:focus {
+  outline: 2px solid var(--amber);
+  outline-offset: 1px;
+}
+
+.boton-primario {
+  background: var(--amber);
+  color: #201404;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 20px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  height: fit-content;
+  transition: background 0.15s ease;
+}
+
+.boton-primario:hover { background: #FFC15C; }
+.boton-primario:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+
+/* ============================================
+   CONTROLES SOBRE RESULTADOS
+   ============================================ */
+.controles-resultado {
+  display: flex;
+  gap: 20px;
+  align-items: end;
+  flex-wrap: wrap;
+}
+
+.campo--compacta { min-width: 160px; }
+
+.contador {
+  margin-left: auto;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+/* ============================================
+   MENSAJES DE ESTADO
+   ============================================ */
+.mensaje {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 24px;
+}
+
+.mensaje--error {
+  color: #F2884B;
+  background: rgba(242, 136, 75, 0.08);
+  border: 1px solid rgba(242, 136, 75, 0.3);
+  border-radius: 8px;
+}
+
+/* ============================================
+   TABLA DE RESULTADOS
+   ============================================ */
+.resultados { overflow-x: auto; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+thead th {
+  text-align: left;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+
+tbody tr {
+  border-bottom: 1px solid var(--line);
+}
+
+tbody tr:nth-child(even) { background: var(--panel-alt); }
+tbody tr:hover { background: #223039; }
+
+td { padding: 10px 12px; vertical-align: middle; }
+
+.miniatura-video {
+  width: 64px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+  border: 1px solid var(--line);
+}
+
+.titulo-video a {
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.titulo-video a:hover { color: var(--amber); text-decoration: underline; }
+
+.titulo-video .canal {
+  display: block;
+  color: var(--text-muted);
+  font-size: 12px;
+  margin-top: 3px;
+}
+
+.vistas {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--amber);
+}
+
+.etiqueta {
+  display: inline-block;
+  background: var(--ink);
+  border: 1px solid var(--line);
+  color: var(--teal);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 3px 8px;
+  border-radius: 999px;
+}
+
+footer {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 12px;
+  padding: 24px;
+}
+
+@media (max-width: 640px) {
+  .miniatura-video { width: 48px; height: 72px; }
+  thead { display: none; }
+  table, tbody, tr, td { display: block; width: 100%; }
+  tbody tr { padding: 12px; border: 1px solid var(--line); border-radius: 8px; margin-bottom: 12px; }
+  td { padding: 4px 0; }
+}
